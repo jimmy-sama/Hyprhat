@@ -51,3 +51,8 @@ if [[ ${INSTALL_LIST} ]]; then
    debug "$(sudo dnf -y install ${INSTALL_LIST[@]})"
 fi
 
+# Hyprland build 
+
+git clone --recursive https://github.com/hyprwm/Hyprland
+cd Hyprland
+sudo make install
