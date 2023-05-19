@@ -12,7 +12,7 @@ debug "Install everything needed..."
 INSTALL_LIST=("neovim" "pyhton3-neovim" "python3" "pyhton3-pip" "kitty" \
 "ranger" "ninja-build" "cmake" "meson" "gcc-c++" "libxcb-devel" "libX11-devel" \
 "pixman-devel" "wayland-protocols-devel" "cairo-devel" "pango-devel" "gdb" \
-"rust" "cargo" "tldr")
+"rust" "cargo" "tldr" "zsh")
 UPDATE=y
 CONFIGS=y
 FONTS=y
@@ -49,6 +49,7 @@ fi
 if [[ ${INSTALL_LIST} ]]; then
    debug "Installing all Packages..."
    debug "$(sudo dnf -y install ${INSTALL_LIST[@]})"
+   debug "$(curl -sS https://starship.rs/install.sh | sh)"
 fi
 
 # Hyprland build 
@@ -56,3 +57,5 @@ fi
 git clone --recursive https://github.com/hyprwm/Hyprland
 cd Hyprland
 sudo make install
+
+# Implementing Eww (https://github.com/elkowar/eww)
