@@ -1,0 +1,31 @@
+lang en_US
+keyboard --xlayouts='us'
+timezone America/New_York --utc
+rootpw $2b$10$A7XOEFLbT/l05zStJmUHzOOrdQu.Qt8BoE6XWWtEzO7/DeLLdH7Hm --iscrypted
+reboot
+text
+cdrom
+bootloader --append="rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M"
+zerombr
+clearpart --all --initlabel
+autopart
+network --bootproto=dhcp
+firstboot --disable
+selinux --disabled
+%pre
+echo "install some packages"
+sudo dnf install @development neofetch git
+
+echo "change dnf.conf"
+bash -c "defaultyes=True >> /etc/dnf/dnf.conf"
+
+#This line is just for comments
+#to see the config file in action
+%end
+%packages
+@^workstation-product-environment
+@desktop-debugging
+@fonts
+@remote-desktop-clients
+tigervnc
+%end
