@@ -12,7 +12,7 @@ debug "Install everything needed..."
 INSTALL_LIST=("neovim" "pyhton3-neovim" "python3" "pyhton3-pip" "kitty" \
 "ranger" "ninja-build" "cmake" "meson" "gcc-c++" "libxcb-devel" "libX11-devel" \
 "pixman-devel" "wayland-protocols-devel" "cairo-devel" "pango-devel" "gdb" \
-"rust" "cargo" "tldr" "zsh")
+"rust" "cargo" "tldr")
 UPDATE=y
 CONFIGS=y
 FONTS=y
