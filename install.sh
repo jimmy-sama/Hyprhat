@@ -17,6 +17,10 @@ INSTALL_LIST=()
 echo -e "${GREEN}(H)yprland and all packages, (I)nstall just my selection of packages or (C)ancle" 
 read decision
 
+command_exists(){
+   command -v $1 >/dev/null 2>&1;
+} 
+
 if decision == 'H'; then
     
     echo "Install everything needed..."

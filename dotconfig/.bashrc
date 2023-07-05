@@ -1,4 +1,19 @@
 #!/bin/bash
+
+command_exists(){
+   command -v $1 >/dev/null 2>&1;
+}
+
+checkenv(){
+## Check Package Handeler
+	PACKAGEMANAGER='apt dnf pacman'
+	for pgm in ${PACKAGEMANAGER}; do
+			if command_exists ${pgm}; then
+					PACKAGER=${pgm}
+					echo -e "Using ${pgm}"
+			fi
+	done
+}
 iatest=$(expr index "$-" i)
 
 #######################################################
@@ -57,6 +72,14 @@ alias nano='edit'
 alias snano='sedit'
 alias vim='nvim'
 alias cat='batcat'
+
+if command_exists batcat; then
+	alias cat='batcat'
+elif command_exists bat; then
+	alias cat='bat'
+else
+	sudo ${PACKAGER} install batcat
+fi
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
